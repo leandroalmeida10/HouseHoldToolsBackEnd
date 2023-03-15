@@ -15,9 +15,16 @@ class NomeDaMigracao extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
+            $table->string('identify');
+            $table->string('nome');
+            $table->string('email');
+            $table->string('senha');
+            $table->string('cpf');
+            $table->string('cep');
+            $table->string('rua');
+            $table->string('numero');
+            $table->string('bairro');
+            $table->string('estado');
             $table->timestamps();
         });
         
@@ -30,6 +37,6 @@ class NomeDaMigracao extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('users');
     }
 }

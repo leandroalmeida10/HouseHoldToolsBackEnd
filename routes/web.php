@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CadastroNewUsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return response()->json(['message' => 'Active']);
 });
