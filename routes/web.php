@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\CadastroNewUsersController;
+use App\Http\Controllers\Health;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return response()->json(['message' => 'Active']);
-});
+Route::get('/', [Health::class, 'health']);
 
-
-Route::post('/register', [RegisterUsers::class, 'store']);
