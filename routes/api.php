@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ControlUsers;
+use App\Http\Controllers\ControllerUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,7 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 
-Route::post('/register', [ControlUsers::class, 'register']);
-Route::get('/edit', [ControlUsers::class, 'edit']);
-Route::get('/delete', [ControlUsers::class, 'delete']);
-Route::get('/login', [ControlUsers::class, 'login']);
+Route::post('/register', [ControllerUsers::class, 'register']);
+Route::get('/edit', [ControllerUsers::class, 'edit']);
+Route::get('/delete', [ControllerUsers::class, 'delete']);
+Route::get('/login', [ControllerUsers::class, 'login']);

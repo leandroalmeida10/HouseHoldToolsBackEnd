@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class UserRegisterRequest extends FormRequest
 {
@@ -13,7 +15,7 @@ class UserRegisterRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -51,5 +53,10 @@ class UserRegisterRequest extends FormRequest
             'senha.required'                => 'Senha é um campo obrigatório',
             'confirmPassword.required'      => 'Confirmação de senha é campo obrigatório'
         ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json(['errors' => $validator->errors()], 422));
     }
 }
