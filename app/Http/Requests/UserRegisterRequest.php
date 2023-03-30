@@ -27,22 +27,21 @@ class UserRegisterRequest extends FormRequest
     {
         return [
             'nome'              => ['required'],
-            'cpf'               => ['required', 'min:13', 'max:13'],
+            'cpf'               => ['required', 'min:11', 'max:11'],
             'email'             => ['required'],
             'cep'               => ['required', 'min:8'],
             'rua'               => ['required'],
             'numero'            => ['required'],
             'bairro'            => ['required'],
             'estado'            => ['required'],
-            'password'          => ['required', 'min:6'],
-            'confirmPassword'   => ['required', 'min:6']
+            'senha'             => ['required', 'min:6']
         ];
     }
 
     public function messages()
     {
         return[
-            'name.required'                 => 'Nome é um campo obrigatório',
+            'nome.required'                 => 'Nome é um campo obrigatório',
             'cpf.required'                  => 'CPF é um campo obrigatório',
             'email.required'                => 'Email é um campo obrigatório',
             'cep.required'                  => 'CEP é um campo obrigatório',
@@ -50,8 +49,7 @@ class UserRegisterRequest extends FormRequest
             'numero.required'               => 'Número da residencia é obrigatório',
             'bairro.required'               => 'Bairro é um campo obrigatório',
             'estado.required'               => 'Estado é um campo obrigatório',
-            'senha.required'                => 'Senha é um campo obrigatório',
-            'confirmPassword.required'      => 'Confirmação de senha é campo obrigatório'
+            'senha.required'                => 'Senha é um campo obrigatório'
         ];
     }
 

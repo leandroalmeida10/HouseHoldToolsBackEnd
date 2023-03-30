@@ -2,7 +2,8 @@
 
 namespace App\Services;
 
-use App\Models\UserModal;
+use App\Exceptions\CustomException;
+use App\Models\UserModel;
 
 class UserService
 {
@@ -10,13 +11,24 @@ class UserService
 
     public function __construct()
     {
-        $this->user = new UserModal();
+        $this->user = new UserModel();
     }
 
     public function RegisterNewUser(array $request)
     {
-        $registerNewUser = $this->user->create($request);
+        $cpdDuplicated = $this->user->where('cpf', $request['cpf'])->first();
 
-        return response()->json([], 201);
+        if($cpdDuplicated){
+
+            $message = 'CPF já Cadastrado';
+            
+            throw new CustomException($message, 400);
+        }
+       
+        $request['senha'] = bcrypt($request['senha']);
+
+        $this->user->create($request);
+        
+        return response()->json(["Cadastrado com Sucesso"], 201);
     }
 }

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserModal extends Model
+class UserModel extends Model
 {
     use HasFactory;
 
@@ -13,15 +13,16 @@ class UserModal extends Model
 
     protected $fillabel = [
         'nome',              
-        'cpf',               
+        'cpf',             
         'email',             
         'cep',               
         'rua',               
         'numero',            
         'bairro',           
         'estado',            
-        'password',          
-        'confirmPassword'   
+        'senha' 
     ];
+
+    protected $guarded = [];
 
 }
