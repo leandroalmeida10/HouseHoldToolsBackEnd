@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,6 +13,7 @@ class UserModel extends Model
     protected $table = 'users';
 
     protected $fillabel = [
+        'id_Cliente',
         'nome',              
         'cpf',             
         'email',             
@@ -24,5 +26,11 @@ class UserModel extends Model
     ];
 
     protected $guarded = [];
+
+    protected static function booted()
+{
+    static::creating(fn(UserModel $userModel) => $userModel->id_Cliente = Str::uuid()->toString());
+}
+
 
 }
