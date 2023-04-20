@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserDeleteRequest;
+use App\Http\Requests\UserEditRequest;
+use App\Http\Requests\UserLoginRequest;
 use App\Http\Requests\UserRegisterRequest;
 use App\Services\UserService;
 
@@ -20,18 +23,19 @@ class ControllerUsers extends Controller
       return $this->userService->RegisterNewUser($request->all());
     }
 
-    public function edit()
+    public function edit(UserEditRequest $request)
     {
-      echo "Hello Edit";
+      return $this->userService->EditUser($request->all());
     }
 
-    public function delete()
+    public function delete(UserDeleteRequest $request)
     {
-      echo "Hello Delete";
+      return $this->userService->DeleteUser($request->all());
     }
 
-    public function login(){
-      echo "Hello Login";
+    public function login(UserLoginRequest $request)
+    {
+      return $this->userService->LoginUser($request->all());
     }
 
 
